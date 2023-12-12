@@ -18,11 +18,27 @@ Frac721 is a CosmWasm smart contract designed for fractionalizing NFTs from spec
 
 These functionalities enable users to fractionalize ownership of NFTs, trade fractional shares, and reclaim NFTs from the vault.
 
+## Terminology
+
+### Vault
+
+"Vault" describes the entirety of the NFTs stored in the contract.
+
+### Depositing
+
+"Depositing" describes the action of trading in 1 NFT in exchange for 1 token to be minted.
+
+### Claiming
+
+"Claiming" describes the action of trading in 1 token in exchange for 1 NFT out of the vault.
+
 ## Contract instantiation
 
-The contract is instantiated by calling `Instantiate{collection_addr}`. The collection address is stored in `CONFIG`.
+The contract is instantiated by calling `Instantiate{collection_addr, cw20_config}`. `cw20_config` is used to instantiate a new CW20 contract.
 
 Upon instantiation, the contract instantiates a new CW20 contract that will be used to issue tokens when NFTs are fractionalized.
+
+The instantiator of the Frac721 contract will need to execute the `SetCW20Address{cw20_address}` message for the contract to begin accepting deposits, by providing the contract address of the CW20 contract that was instantiated.
 
 ## Contract methods
 
@@ -33,12 +49,6 @@ The Deposit method extends CW721Receiver and issues a singular token to the mess
 ### `Claim{token_id}` (CW20 Send)
 
 The Claim method requires for a singular CW20 token to be sent and sends the requested NFT to the message sender. The contract will subsequently burn the CW20 token
-
-### ~~`UpdateConfig{collection_addr}`~~
-
-The `UpdateConfig` method is privileged to the administrator of the contract.
-
-> 💡 We should not allow for the collection address to be updated. Frac721 users should instantiate a new contract if they want to allow for fractionalization of a different collection.
 
 
 ## Storage
