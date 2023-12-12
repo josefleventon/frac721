@@ -55,12 +55,11 @@ The Claim method requires for a singular CW20 token to be sent and sends the req
 
 ### Deposited NFTs
 
-Deposited NFTs are stored in `deposits` as follows:
+Deposited NFTs are stored as follows:
 
 ```rust
-pub struct TokenDeposit {
+pub struct VaultItem {
    pub token_id: String,
    pub depositor: Addr,
 }
 ```
-
