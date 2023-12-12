@@ -18,15 +18,21 @@ Frac721 is a CosmWasm smart contract designed for fractionalizing NFTs from spec
 
 These functionalities enable users to fractionalize ownership of NFTs, trade fractional shares, and reclaim NFTs from the vault.
 
+## Contract instantiation
+
+The contract is instantiated by calling `Instantiate{collection_addr}`. The collection address is stored in `CONFIG`.
+
+Upon instantiation, the contract instantiates a new CW20 contract that will be used to issue tokens when NFTs are fractionalized.
+
 ## Contract methods
 
 ### `Deposit{}` (CW721 Send)
 
 The Deposit method extends CW721Receiver and issues a singular token to the message sender in exchange for their NFT.
 
-### `Withdraw{token_id}` (CW20 Send)
+### `Claim{token_id}` (CW20 Send)
 
-The Withdraw method requires for a singular CW20 token to be sent and sends the requested NFT to the message sender.
+The Claim method requires for a singular CW20 token to be sent and sends the requested NFT to the message sender. The contract will subsequently burn the CW20 token
 
 ### ~~`UpdateConfig{collection_addr}`~~
 
