@@ -68,7 +68,7 @@ Deposited NFTs are stored as follows:
 ```rust
 pub struct VaultItem {
    pub token_id: String,
-   pub depositor: Addr,
+   pub depositor: Addr
 }
 ```
 
@@ -79,7 +79,7 @@ Genesis depositor addresses are stored as follows:
 ```rust
 pub struct GenesisDepositor {
   pub address: Addr,
-  pub first_deposit_date: String
+  pub first_deposit_date: String,
   pub first_deposit_token_id: String
 }
 ```
