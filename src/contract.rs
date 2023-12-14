@@ -1,9 +1,7 @@
-use std::any::Any;
-
 use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{
-    ensure, from_binary, Addr, Binary, QueryResponse, Response, StdError, StdResult, Storage,
-    SubMsg, Uint128, WasmMsg,
+    ensure, from_binary, Addr, Binary, Response, StdError, StdResult, Storage, SubMsg, Uint128,
+    WasmMsg,
 };
 use cw20::MinterResponse;
 use cw20_base::msg::{
